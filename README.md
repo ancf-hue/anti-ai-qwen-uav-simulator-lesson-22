@@ -93,21 +93,6 @@
 
 ---
 
-## 🚀 Быстрый старт
-
-### Вариант 1: Локальный запуск (рекомендуется)
-
-```bash
-# Клонируйте репозиторий
-git clone https://github.com/your-username/anti-ai-qwen-uav-simulator-lesson-22.git
-cd anti-ai-qwen-uav-simulator-lesson-22
-
-# Запустите локальный сервер (Python)
-python -m http.server 8000
-
-# Или используйте Node.js (live-server)
-npx live-server
-
 
 
 🤝 ПОДДЕРЖАТЬ ПРОЕКТ
