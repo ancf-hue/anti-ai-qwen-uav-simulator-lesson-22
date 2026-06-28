@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     🗺️ SITEMAP.XML — Anti-AI Qwen UAV Simulator Lesson 22
+     🎯 Тренажёр оператора БПЛА «ОХОТНИК»
+     ============================================================
+     Файл содержит список URL для индексации поисковыми системами.
+     Документация: https://www.sitemaps.org/protocol.html
+     ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ========================================================
+       🏠 ГЛАВНАЯ СТРАНИЦА
+       ======================================================== -->
+  <url>
+    <loc>https://your-username.github.io/anti-ai-qwen-uav-simulator-lesson-22/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ========================================================
+       📄 ОСНОВНОЙ HTML ФАЙЛ
+       ======================================================== -->
+  <url>
+    <loc>https://your-username.github.io/anti-ai-qwen-uav-simulator-lesson-22/index.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ========================================================
+       📖 README (документация проекта)
+       ======================================================== -->
+  <url>
+    <loc>https://github.com/your-username/anti-ai-qwen-uav-simulator-lesson-22</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ========================================================
+       🖼️ МЕДИА РЕСУРСЫ (опционально для индексации)
+       ======================================================== -->
+  <url>
+    <loc>https://your-username.github.io/anti-ai-qwen-uav-simulator-lesson-22/uav-operator.jpg</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://your-username.github.io/anti-ai-qwen-uav-simulator-lesson-22/favicon.ico</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://your-username.github.io/anti-ai-qwen-uav-simulator-lesson-22/ohotnik-theme.mp3</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>

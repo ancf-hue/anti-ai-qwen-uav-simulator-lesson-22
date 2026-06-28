@@ -1,0 +1,81 @@
+# ============================================================
+# 🤖 ROBOTS.TXT — Anti-AI Qwen UAV Simulator Lesson 22
+# 🎯 Тренажёр оператора БПЛА «ОХОТНИК»
+# ============================================================
+# Файл управляет доступом поисковых роботов к ресурсам сайта.
+# Документация: https://developers.google.com/search/docs/crawling-indexing/robots/intro
+# ============================================================
+
+# ------------------------------------------------------------
+# 🌐 Правила для ВСЕХ поисковых роботов
+# ------------------------------------------------------------
+User-agent: *
+
+# ✅ Разрешаем индексацию всего сайта
+Allow: /
+
+# ✅ Разрешаем доступ к ресурсам
+Allow: /index.html
+Allow: /favicon.ico
+Allow: /uav-operator.jpg
+Allow: /ohotnik-theme.mp3
+Allow: /assets/
+Allow: /screenshots/
+
+# ❌ Запрещаем индексацию служебных файлов
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /README.md
+Disallow: /LICENSE
+Disallow: /.gitignore
+Disallow: /.env
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /logs/
+
+# ❌ Запрещаем индексацию временных файлов
+Disallow: /*.log$
+Disallow: /*.tmp$
+Disallow: /*.bak$
+Disallow: /*.swp$
+
+# ------------------------------------------------------------
+# 🔍 Правила для Googlebot
+# ------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# ------------------------------------------------------------
+# 🔍 Правила для Yandex
+# ------------------------------------------------------------
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
+
+# ------------------------------------------------------------
+# 🔍 Правила для Bing
+# ------------------------------------------------------------
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ------------------------------------------------------------
+# 🔍 Правила для DuckDuckGo
+# ------------------------------------------------------------
+User-agent: DuckDuckBot
+Allow: /
+
+# ------------------------------------------------------------
+# 🗺️ Карта сайта
+# ------------------------------------------------------------
+Sitemap: https://your-username.github.io/anti-ai-qwen-uav-simulator-lesson-22/sitemap.xml
+
+# ------------------------------------------------------------
+# 👤 Хозяин сайта
+# ------------------------------------------------------------
+Host: your-username.github.io
