@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<!-- ✅ ИСПРАВЛЕНО: убран user-scalable=no для доступности -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <title>Урок 22: Охотник — Охота на дроны | Qwen</title>
 <style>
@@ -44,7 +45,8 @@ body{ overflow: hidden; font-family:'Segoe UI','Orbitron', monospace; background
 .difficulty-btn:active{ transform: translateY(4px) rotateX(0deg);}
 
 .difficulty-info{ margin-top: 30px; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 20px; max-width: 600px; text-align: center; border: 1px solid rgba(255,100,0,0.3);}
-.difficulty-info h3{ color: #ff6400; margin-bottom: 15px; font-size: 20px;}
+/* ✅ ИСПРАВЛЕНО: стили для h2 вместо h3 */
+.difficulty-info h2{ color: #ff6400; margin-bottom: 15px; font-size: 20px;}
 .difficulty-info p{ color: #ffccaa; margin: 8px 0; font-size: 13px; line-height: 1.6;}
 
 #simulator-page{ position: fixed; inset: 0; opacity: 0; pointer-events: none; transition: opacity 1s ease;}
@@ -138,7 +140,8 @@ body{ overflow: hidden; font-family:'Segoe UI','Orbitron', monospace; background
   </div>
   
   <div class="difficulty-info">
-    <h3>📊 Параметры уровней:</h3>
+    <!-- ✅ ИСПРАВЛЕНО: h3 заменён на h2 для правильной иерархии заголовков -->
+    <h2>📊 Параметры уровней:</h2>
     <p><strong>🟢 Лёгкий:</strong> 3 вражеских дрона, медленные</p>
     <p><strong>🟡 Средний:</strong> 5 вражеских дронов, средняя скорость</p>
     <p><strong>🔴 Сложный:</strong> 7 вражеских дронов, быстрые и манёвренные</p>
@@ -226,10 +229,8 @@ body{ overflow: hidden; font-family:'Segoe UI','Orbitron', monospace; background
   <source src="ohotnik-theme.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ✅ ИСПРАВЛЕНО: используем jsdelivr вместо cloudflare -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script>
-// ✅ ИСПРАВЛЕНО: проверка загрузки Three.js
 if (typeof THREE === 'undefined') {
   console.error('❌ Three.js не загружен! Проверьте подключение к интернету.');
   window.addEventListener('DOMContentLoaded', function() {
@@ -248,7 +249,6 @@ if (typeof THREE === 'undefined') {
   };
 
   let currentDifficulty = 'easy';
-  // ✅ ИСПРАВЛЕНО: dronePos и droneVel инициализируются позже в initSimulator
   let state = {
     animationId: null, gameCompleted: false, timeLeft: 180, timerInterval: null, isRestarting: false,
     enemiesDown: 0, score: 0, health: 100,
@@ -265,7 +265,7 @@ if (typeof THREE === 'undefined') {
   let audioCtx = null, notifTimeout = null, lastNotifText = "";
   let keys = {};
   let mouseDown = false, lastMouseX = 0, lastMouseY = 0;
-  let listenersSetup = false; // ✅ ИСПРАВЛЕНО: флаг для однократной установки обработчиков
+  let listenersSetup = false;
 
   function ensureAudio(){
     if(!audioCtx){ try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ return false; } }
@@ -294,7 +294,6 @@ if (typeof THREE === 'undefined') {
     crash: () => { playSound(100, 0.5, 'sawtooth', 0.3); setTimeout(() => playSound(80, 0.6, 'square', 0.25), 100); },
     victory: () => { playSound(523, 0.15, 'sine', 0.12); setTimeout(() => playSound(659, 0.15, 'sine', 0.12), 150); setTimeout(() => playSound(784, 0.15, 'sine', 0.12), 300); setTimeout(() => playSound(1047, 0.3, 'sine', 0.15), 450); },
     warning: () => { playSound(400, 0.15, 'square', 0.1); },
-    // ✅ ИСПРАВЛЕНО: добавлен отсутствующий метод collision
     collision: () => { playSound(150, 0.25, 'sawtooth', 0.25); setTimeout(() => playSound(100, 0.3, 'square', 0.2), 80); }
   };
 
@@ -505,7 +504,6 @@ if (typeof THREE === 'undefined') {
     return { group: droneGroup, propellers: propellers };
   }
 
-  // ✅ ИСПРАВЛЕНО: рекурсивная функция очистки памяти
   function disposeObject(obj){
     if(obj.children){
       while(obj.children.length > 0){
@@ -529,7 +527,6 @@ if (typeof THREE === 'undefined') {
   function initSimulator(){
     console.log('🎯 Инициализация охотник-симулятора...');
     
-    // ✅ ИСПРАВЛЕНО: инициализация THREE-объектов после загрузки библиотеки
     state.dronePos = new THREE.Vector3(0, 10, 30);
     state.droneVel = new THREE.Vector3(0, 0, 0);
     
@@ -550,7 +547,6 @@ if (typeof THREE === 'undefined') {
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 15, 35);
     
-    // ✅ ИСПРАВЛЕНО: удаляем старый renderer перед созданием нового
     const simPage = document.getElementById('simulator-page');
     if(renderer && renderer.domElement && renderer.domElement.parentNode){
       try{ renderer.domElement.parentNode.removeChild(renderer.domElement); } catch(e){}
@@ -653,7 +649,6 @@ if (typeof THREE === 'undefined') {
     droneGroup.position.copy(state.dronePos);
     scene.add(droneGroup);
     
-    // ✅ ИСПРАВЛЕНО: обработчики устанавливаются только один раз
     if(!listenersSetup){
       setupEventListeners();
       listenersSetup = true;
@@ -671,7 +666,6 @@ if (typeof THREE === 'undefined') {
     const cameraForward = new THREE.Vector3();
     camera.getWorldDirection(cameraForward);
     cameraForward.y = 0;
-    // ✅ ИСПРАВЛЕНО: проверка на нулевой вектор перед нормализацией
     if(cameraForward.lengthSq() > 0.0001){
       cameraForward.normalize();
     } else {
@@ -777,7 +771,7 @@ if (typeof THREE === 'undefined') {
       if(dist < tree.radius + 1){
         state.health -= 10;
         document.getElementById('health').innerText = Math.max(0, state.health);
-        SFX.collision(); // ✅ ИСПРАВЛЕНО: теперь метод существует
+        SFX.collision();
         showNotification("⚠️ Столкновение с деревом!", 'hit');
         
         const pushDir = new THREE.Vector3()
@@ -855,7 +849,6 @@ if (typeof THREE === 'undefined') {
     }
     
     if(scene){
-      // ✅ ИСПРАВЛЕНО: рекурсивная очистка всех объектов
       while(scene.children.length > 0) {
         const child = scene.children[0];
         disposeObject(child);
@@ -888,7 +881,6 @@ if (typeof THREE === 'undefined') {
       mouseDown = false;
     });
     
-    // ✅ ИСПРАВЛЕНО: проверка на существование renderer.domElement
     const attachMouseListeners = () => {
       if(!renderer || !renderer.domElement) return;
       
@@ -928,7 +920,6 @@ if (typeof THREE === 'undefined') {
     });
     document.getElementById('defeatExitBtn').addEventListener('click', exitToMenu);
     
-    // Отложенное подключение mouse-обработчиков к canvas
     setTimeout(attachMouseListeners, 100);
   }
 
@@ -948,7 +939,6 @@ if (typeof THREE === 'undefined') {
     }
   });
 
-  // ✅ ИСПРАВЛЕНО: делаем функцию доступной глобально для onclick в HTML
   window.startSimulator = startSimulator;
 }
 </script>
